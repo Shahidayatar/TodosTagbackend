@@ -1,0 +1,22 @@
+{
+  "name": "advanced-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^5.0.0",
+    "js-yaml": "^4.1.0",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0",
+    "sqlite3": "^5.1.7",
+    "swagger-ui-koa": "^0.0.1"
+  }
+}
