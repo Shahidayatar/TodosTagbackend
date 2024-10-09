@@ -7,14 +7,9 @@ const db = new sqlite3.Database(path.join(__dirname, 'todos.db'), (err) => {
         console.error('Error opening database ' + err.message);
     } else {
         console.log('Connected to the SQLite database.');
+
         // Create tables if they do not exist
         db.serialize(() => {
-          // Drop existing tables
-          db.run("DROP TABLE IF EXISTS todo_tags");
-          db.run("DROP TABLE IF EXISTS todos");
-          db.run("DROP TABLE IF EXISTS tags");
-      
-          // Create new tables 
           db.run(`
               CREATE TABLE IF NOT EXISTS tags (
                   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,6 +17,7 @@ const db = new sqlite3.Database(path.join(__dirname, 'todos.db'), (err) => {
                   url TEXT
               )
           `);
+
           db.run(`
               CREATE TABLE IF NOT EXISTS todos (
                   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,6 +26,7 @@ const db = new sqlite3.Database(path.join(__dirname, 'todos.db'), (err) => {
                   completed BOOLEAN NOT NULL DEFAULT 0
               )
           `);
+
           db.run(`
             CREATE TABLE IF NOT EXISTS todo_tags (
               todo_id INTEGER,
@@ -40,9 +37,8 @@ const db = new sqlite3.Database(path.join(__dirname, 'todos.db'), (err) => {
             )
           `);
       });
-      
     }
 });
-  
+
 // Export the database instance for use in routes
 module.exports = db;
